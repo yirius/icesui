@@ -1,0 +1,88 @@
+{extend name="base" /}
+{block name="head"}
+    {$showConfig['headconfig']}
+{/block}
+{block name="main"}
+<nav class="navbar" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse-example">
+                <span class="sr-only">切换导航</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{$showConfig['adminUrl']}">{$showConfig['adminTitle']}</a>
+        </div>
+        <div class="collapse navbar-collapse navbar-collapse-example">
+            <ul id="adminTopLists" class="nav navbar-nav">
+                {foreach name="adminTopLists" key="adminTopLists_Key" item="adminTopLists_Val"}
+                <li {if CheckIsEq($adminTopLists_Val['name'], "home")}class="active"{/if} data-href="{$adminTopLists_Val['name']}">
+                    <a style="cursor: pointer">
+                        <i class="icon {$adminTopLists_Val['icon']}"></i> {$adminTopLists_Val['text']}
+                    </a>
+                </li>
+                {/foreach}
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#">欢迎您, 尊敬的 {$adminUserTitle||default="管理员"}</a>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">
+                        操作 <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                            <a href="{$showConfig['personUrl']}">
+                                个人资料
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="{$showConfig['logoutUrl']}">
+                                退出
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="admin-slide">
+    <nav class="menu" data-ride="menu" style="width: 200px">
+        <ul id="sideTreeMenu" class="tree tree-menu" data-ride="tree">
+
+        </ul>
+    </nav>
+</div>
+<div class="admin-main">
+    <div class="admin-tabline">
+        <a id="adminArrawLeft" class="admin-arraw admin-arraw-left pull-left">
+            <i class="icon icon-backward"></i>
+        </a>
+        <ul class="nav nav-tabs" id="adminMainTabs">
+            <li class="active">
+                <a href="#" id="tabhomeboard" data-target="#homeboard" data-toggle="tab">
+                    {$showConfig['welcomeTitle']}
+                </a>
+            </li>
+        </ul>
+        <a id="adminArrawRight" class="admin-arraw admin-arraw-right pull-right">
+            <i class="icon icon-forward"></i>
+        </a>
+    </div>
+    <div class="tab-content" id="adminMainTabContents">
+        <div class="tab-pane fade active in" id="homeboard">
+            <iframe src="{$showConfig['welcomeUrl']}"></iframe>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="footer"}
+    <script>
+        var adminSlideLists = {:json_encode($adminSlideLists)};
+    </script>
+    {$showConfig['footconfig']}
+{/block}

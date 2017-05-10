@@ -1,0 +1,11 @@
+<div class="form-group form-material {$renderConfig['extra_class']}">
+    <input type="text"
+           data-plugin="formatter"
+           class="form-control"
+           value="{$renderConfig['value']}"
+           id="adminField{$renderConfig['name']}"
+           name="{$renderConfig['name']}"
+           {$renderConfig['extra_attr']}>
+    <div class="hint">{$renderConfig['tips']}</div>
+    <label class="floating-label" for="adminField{$renderConfig['name']}">{$renderConfig['title']}</label>
+</div>

@@ -1,0 +1,25 @@
+<div class="form-group form-material form-daterange {$renderConfig['extra_class']}">
+    <label class="">{$renderConfig['title']}</label>
+    <div class="row">
+        <div class="col-xs-12">
+            <span class="input-group-addon"><i class="icon-time"></i></span>
+            <input type="text"
+                   data-plugin="date"
+                   class="form-control"
+                   name="start{$renderConfig['name']}"
+                   value="{$renderConfig['value'][0]}"
+                   id="adminFieldstart{$renderConfig['name']}"
+                   {$renderConfig['extra_attr']}
+                   placeholder="{$renderConfig['tips']}">
+            <span class="input-group-addon fix-border">至</span>
+            <input type="text"
+                   data-plugin="date"
+                   class="form-control"
+                   name="end{$renderConfig['name']}"
+                   value="{$renderConfig['value'][0]}"
+                   id="adminFieldend{$renderConfig['name']}"
+                   {$renderConfig['extra_attr']}
+                   placeholder="{$renderConfig['tips']}">
+        </div>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+<div class="form-group form-material {$renderConfig['extra_class']}">
+    <label class="">{$renderConfig['title']}{if !empty($renderConfig['tips'])}<small>({$renderConfig['tips']})</small>{/if}</label>
+    <div class="row">
+        <div class="col-xs-12">
+            <input type="hidden" name="{$renderConfig['name']}" id="adminField{$renderConfig['name']}"/>
+            <div class="list-group" data-plugin="sortable" data-id="adminField{$renderConfig['name']}" {$renderConfig['extra_attr']}>
+                {foreach name="renderConfig['options']" key="options_i" item="options_Val"}
+                <div class="list-group-item" value="{$options_Val['value']}">{$options_Val['text']}</div>
+                {/foreach}
+            </div>
+        </div>
+    </div>
+</div>

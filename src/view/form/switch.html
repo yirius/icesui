@@ -1,0 +1,6 @@
+<div class="form-group form-material {$renderConfig['extra_class']}">
+    <div class="switch text-left">
+        <input type="checkbox" name="{$renderConfig['name']}" id="adminField{$renderConfig['name']}" value="1" {if !empty($renderConfig['value'])}checked{/if} {$renderConfig['extra_attr']}>
+        <label>{$renderConfig['title']}{if !empty($renderConfig['tips'])}<small>({$renderConfig['tips']})</small>{/if}</label>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="form-group form-material {$renderConfig['extra_class']}">
+    <label class="">{$renderConfig['title']}{if !empty($renderConfig['tips'])}<small>({$renderConfig['tips']})</small>{/if}</label>
+    <select class="form-control selectpicker show-tick"
+            data-style="{$renderConfig['selectData']['styleforBtn']}"
+            data-show-subtext="{$renderConfig['selectData']['showsubtext']}"
+            data-selected-text-format="{$renderConfig['selectData']['textformat']}"
+            data-live-search="{$renderConfig['selectData']['livesearch']}"
+            id="adminField{$renderConfig['name']}"
+            name="{$renderConfig['name']}"
+            {$renderConfig['extra_attr']}>
+        {foreach name="renderConfig['options']" key="options_i" item="options_Val"}
+            <option value="{$options_Val['value']}" {if $renderConfig['value'] == $options_Val['value']}selected {/if} {if !empty($options_Val['icon'])}data-icon="{$options_Val['icon']}"{/if} {if !empty($options_Val['subtext'])}data-subtext="{$options_Val['subtext']}"{/if} {if !empty($options_Val['title'])}title="{$options_Val['title']}"{/if}>{$options_Val['text']}</option>
+        {/foreach}
+    </select>
+</div>

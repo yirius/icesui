@@ -1,0 +1,15 @@
+<div class="form-group form-material {$renderConfig['extra_class']}">
+    <label class="">{$renderConfig['title']}{if !empty($renderConfig['tips'])}<small>({$renderConfig['tips']})</small>{/if}</label>
+    <div class="row">
+        <div class="col-xs-12">
+            {foreach name="renderConfig['options']" key="options_i" item="options_Val"}
+            <label class="radio-inline">
+                <input type="radio" name="{$renderConfig['name']}"
+                       value="{$options_Val['value']}"
+                       {if $renderConfig['value'] == $options_Val['value']}checked {/if}
+                       {$renderConfig['extra_attr']}> {$options_Val['text']}
+            </label>
+            {/foreach}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,136 @@
+{extend name="base" /}
+{block name="head"}
+    {$showConfig['headconfig']}
+    <style>
+        body{
+            padding: 20px;
+            background: #f1f4f5;
+        }
+    </style>
+    <script>
+        var uploaderLimit = {};
+        var uploaderFile = {};
+    </script>
+{/block}
+{block name="main"}
+<div class="admin-Form">
+    <form class="form row">
+        {foreach name="formRenderArray" key="formRenderArray_i" item="renderConfig"}
+            {switch name="renderConfig.type"}
+
+                {case value="text"}
+                    {// text, 带动画效果的 }
+                    {include file="form/text" type='' /}
+                {/case}
+
+                {case value="text1"}
+                    {// text1, 不带动画效果的 }
+                    {include file="form/text1" type='' /}
+                {/case}
+
+                {case value="password"}
+                    {// password }
+                    {include file="form/password" type='' /}
+                {/case}
+
+                {case value="select"}
+                    {// select, 分成自带multiple和不带的 }
+                    {include file="form/select" type='' /}
+                {/case}
+
+                {case value="switch"}
+                    {// switch }
+                    {include file="form/switch" type='' /}
+                {/case}
+
+                {case value="textarea"}
+                    {// textarea }
+                    {include file="form/textarea" type='' /}
+                {/case}
+
+                {case value="date"}
+                    {// 日期 }
+                    {include file="form/date" type='' /}
+                {/case}
+
+                {case value="datetime"}
+                    {// datetime }
+                    {include file="form/datetime" type='' /}
+                {/case}
+
+                {case value="time"}
+                    {// time }
+                    {include file="form/time" type='' /}
+                {/case}
+
+                {case value="daterange"}
+                    {// daterange }
+                    {include file="form/daterange" type='' /}
+                {/case}
+
+                {case value="static"}
+                    {// static }
+                    {include file="form/static" type='' /}
+                {/case}
+
+                {case value="upload"}
+                    {// upload }
+                    {include file="form/upload" type='' /}
+                {/case}
+
+                {case value="radio"}
+                    {// radio }
+                    {include file="form/radio" type='' /}
+                {/case}
+
+                {case value="checkbox"}
+                    {// checkbox }
+                    {include file="form/checkbox" type='' /}
+                {/case}
+
+                {case value="checkboxgroup"}
+                    {// checkbox }
+                    {include file="form/checkboxgroup" type='' /}
+                {/case}
+
+                {case value="ueditor"}
+                    {// ueditor }
+                    {include file="form/ueditor" type='' /}
+                {/case}
+
+                {case value="textformatter"}
+                    {// textformatter }
+                    {include file="form/textformatter" type='' /}
+                {/case}
+
+                {case value="sortable"}
+                    {// sortable }
+                    {include file="form/sortable" type='' /}
+                {/case}
+
+                {case value="chosenicon"}
+                    {// chosenicon }
+                    {include file="form/chosenicon" type='' /}
+                {/case}
+
+            {/switch}
+        {/foreach}
+        <button type="submit" class="btn btn-primary">提交</button>
+    </form>
+</div>
+{/block}
+{block name="footer"}
+    <script>
+        $(function(){
+            $(".form").on("submit", function(){
+                $.post("{$formPostUrl}", $(this).serialize(), function(data){
+                    new $.zui.Messager(data.msg, {
+                        type: data.code==1?'success':'danger' // 定义颜色主题
+                    }).show();
+                });
+                return false;
+            });
+        });
+    </script>
+    {$showConfig['footconfig']}
+{/block}

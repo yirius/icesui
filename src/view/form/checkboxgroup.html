@@ -1,0 +1,49 @@
+<div class="form-group form-material {$renderConfig['extra_class']}">
+    <label class="">{$renderConfig['title']}{if !empty($renderConfig['tips'])}<small>({$renderConfig['tips']})</small>{/if}</label>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="panel-group" aria-multiselectable="true">
+                {foreach name="renderConfig['options']" key="options_i" item="options_Val"}
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title checkgroup">
+                                <label class="radio-inline" style="padding-left: 0;">
+                                    <input type="checkbox" name="{$renderConfig['name']}[]"
+                                           value="{$options_Val['value']}"
+                                           {if in_array($options_Val['value'], $renderConfig['value'])}checked {/if}
+                                    {$renderConfig['extra_attr']}> {$options_Val['text']}
+                                </label>
+                                <a data-toggle="collapse" href="#collapseIces{$options_i}">
+                                    <span class="icon icon-plus"></span>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseIces{$options_i}" class="panel-collapse collapse in">
+                            {notempty name="options_Val['sub']"}
+                                {foreach name="options_Val['sub']" key="sub_Key" item="sub_Val"}
+                                    <label class="radio-inline" style="padding: 5px 0 5px 20px;">
+                                        <input type="checkbox" name="{$renderConfig['name']}[]"
+                                               value="{$sub_Val['value']}"
+                                               {if in_array($sub_Val['value'], $renderConfig['value'])}checked {/if}
+                                        {$renderConfig['extra_attr']}> {$sub_Val['text']}
+                                    </label>
+                                    {notempty name="sub_Val['sub']"}
+                                        {foreach name="sub_Val['sub']" key="subs_Key" item="subs_Val"}
+                                            <label class="radio-inline" style="padding: 5px 0 5px 20px;">
+                                                <input type="checkbox" name="{$renderConfig['name']}[]"
+                                                       value="{$subs_Val['value']}"
+                                                       {if in_array($subs_Val['value'], $renderConfig['value'])}checked {/if}
+                                                {$renderConfig['extra_attr']}> {$subs_Val['text']}
+                                            </label>
+                                        {/foreach}
+                                    {/notempty}
+                                    <br/>
+                                {/foreach}
+                            {/notempty}
+                        </div>
+                    </div>
+                {/foreach}
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="form-group form-material {$renderConfig['extra_class']}">
+    <label class="floating-label" for="adminField{$renderConfig['name']}">{$renderConfig['title']}</label>
+    <div id="adminField{$renderConfig['name']}"
+         data-name="{$renderConfig['name']}"
+         class="uploader"
+         data-plugin="uploader"
+         data-limitFilesCount="1"
+         data-url="{$renderConfig['tips']}"
+         {$renderConfig['extra_attr']}>
+        <input type="hidden" name="{$renderConfig['name']}"/>
+        <div class="uploader-message text-center">
+            <div class="content"></div>
+            <button type="button" class="close">×</button>
+        </div>
+        <div class="uploader-files file-list file-list-grid"></div>
+        <div>
+            <hr class="divider">
+            <div class="uploader-status pull-right text-muted"></div>
+            <button type="button" class="btn btn-link uploader-btn-browse"><i class="icon icon-plus"></i> 选择文件</button>
+            <button type="button" class="btn btn-link uploader-btn-start"><i class="icon icon-cloud-upload"></i> 开始上传</button>
+        </div>
+    </div>
+</div>
+<script>
+    uploaderLimit["{$renderConfig['name']}"] = {$renderConfig['limitcount']};
+    uploaderFile["{$renderConfig['name']}"] = {$renderConfig['value']};
+</script>

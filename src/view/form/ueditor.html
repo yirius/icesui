@@ -1,0 +1,11 @@
+<div class="form-group form-material {$renderConfig['extra_class']}">
+    <label class="" for="adminField{$renderConfig['name']}">{$renderConfig['title']}</label>
+    <div class="row">
+        <div class="col-xs-12">
+            <script id="adminField{$renderConfig['name']}" name="{$renderConfig['name']}"
+                    data-plugin="ueditor"
+                    type="text/plain"
+                    {$renderConfig['extra_attr']}>{$renderConfig['value']}</script>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,273 @@
+/** 重写 navbar **/
+.navbar {
+  border-radius: 0;
+  margin-bottom: 0;
+  z-index: 3;
+  background-color: #4397e6;
+  color: white;
+}
+.navbar .navbar-brand {
+  width: 200px;
+  color: #fff;
+}
+.navbar .navbar-nav li > a {
+  color: #fff;
+}
+.navbar .navbar-nav .dropdown-menu li > a {
+  color: black;
+}
+.navbar .navbar-nav .dropdown-menu li > a:hover {
+  color: #fff;
+}
+.navbar .navbar-nav > .active > a,
+.navbar .navbar-nav > .active > a:focus,
+.navbar .navbar-nav > .active > a:hover,
+.navbar .navbar-nav > li > a:focus,
+.navbar .navbar-nav > li > a:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: #fff;
+}
+/** 重写slide边界样式 **/
+.admin-slide {
+  width: 200px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  padding-top: 42px;
+  border-right: 1px solid #ddd;
+  z-index: 2;
+}
+@media (max-width: 768px) {
+  .admin-slide {
+    display: none;
+  }
+}
+/** 写一下admin-main样式 **/
+.admin-main {
+  width: calc(100% - 200px);
+  margin-left: 200px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  padding-top: 42px;
+  z-index: 1;
+  overflow: scroll;
+  /** 里面的line 放置tab按钮 **/
+  /** 关闭按钮 **/
+  /** 打开的窗口样式 **/
+}
+.admin-main .admin-tabline {
+  height: 40px;
+  width: 100%;
+  border-bottom: 1px solid #ddd;
+  /** 左右两侧的箭头按钮 **/
+  /** 写一下中间的样式, 可以左右移动 **/
+  /** 当存在肩头可移动的时候加入这个 **/
+}
+.admin-main .admin-tabline .admin-arraw {
+  width: 40px;
+  text-align: center;
+  height: 38px;
+  padding-top: 10px;
+  cursor: pointer;
+  position: absolute;
+  z-index: 2;
+  background-color: #ffffff;
+  display: none;
+}
+.admin-main .admin-tabline .admin-arraw-left {
+  left: 0;
+}
+.admin-main .admin-tabline .admin-arraw-right {
+  right: 0;
+}
+.admin-main .admin-tabline ul {
+  height: 40px;
+  float: left;
+  overflow: auto;
+  overflow-y: hidden;
+}
+.admin-main .admin-tabline ul li {
+  float: left;
+}
+.admin-main .admin-tabline .showTabScroll {
+  left: 40px;
+  position: absolute;
+  right: 40px;
+  z-index: 1;
+}
+.admin-main .icon-times {
+  cursor: pointer;
+}
+.admin-main iframe {
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+  border: 0;
+}
+.bootstrap-table .table {
+  font-size: 14px;
+}
+.bootstrap-table .columns .btn {
+  height: 32px;
+}
+.bootstrap-table .editableform {
+  margin-bottom: 0;
+}
+.bootstrap-table .editable-input,
+.bootstrap-table .editable-buttons {
+  float: left;
+}
+.bootstrap-table .editable-input input,
+.bootstrap-table .editable-buttons input,
+.bootstrap-table .editable-input .btn,
+.bootstrap-table .editable-buttons .btn {
+  height: 32px;
+}
+.bootstrap-table .editable-input .btn,
+.bootstrap-table .editable-buttons .btn {
+  margin-left: 10px;
+}
+.admin-Form {
+  /** 写一下点击事件 有加了focus样式和 伪类点击**/
+}
+.admin-Form .form {
+  background: #ffffff;
+  padding: 20px;
+}
+.admin-Form .chosen-single b {
+  margin-top: 8px;
+}
+.admin-Form .form-material .form-control,
+.admin-Form .form-material .form-control.focus,
+.admin-Form .form-material .form-control:focus {
+  float: none;
+  border: 0;
+  outline: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background-size: 100% 2px,100% 1px;
+  background-image: linear-gradient(#62a8ea, #62a8ea), linear-gradient(#e4eaec, #e4eaec);
+  transition-duration: .3s;
+}
+.admin-Form .form-material .form-control {
+  padding: 0;
+  background-color: #ffffff;
+  background-repeat: no-repeat;
+  background-position: center bottom, center calc(99%);
+  background-size: 0 2px,100% 1px;
+  transition: background 0s ease-out;
+}
+.admin-Form .form-control {
+  appearance: none;
+  box-shadow: none;
+  transition: box-shadow 0.25s linear, border 0.25s linear, color 0.25s linear, background-color 0.25s linear, -webkit-box-shadow 0.25s linear;
+}
+.admin-Form .form-material {
+  position: relative;
+  margin: 30px 0 15px 0;
+}
+.admin-Form .form-material .hint {
+  position: absolute;
+  display: none;
+  font-size: 80%;
+}
+.admin-Form .form-material .form-control.focus ~ .hint,
+.admin-Form .form-material .form-control:focus ~ .hint {
+  display: block;
+}
+.admin-Form .form-material .floating-label {
+  position: absolute;
+  left: 10px;
+  top: 8.4px;
+  font-size: 14px;
+  color: #76838f;
+  pointer-events: none;
+  transition: .3s ease all;
+}
+.admin-Form .form-material .form-control.focus ~ .floating-label,
+.admin-Form .form-material .form-control:focus ~ .floating-label,
+.admin-Form .form-material .form-control:not(.empty) ~ .floating-label {
+  top: -11.2px;
+  font-size: 11.2px;
+}
+.admin-Form .btn-select {
+  height: 32px;
+  padding: 4px 12px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #76838f;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #e4eaec;
+  border-radius: 3px;
+  outline: 0 !important;
+}
+.admin-Form .btn-group.open .btn-select,
+.admin-Form .btn-select:focus {
+  background-color: #fff;
+  border-color: #62a8ea !important;
+  box-shadow: none;
+  outline: 0 !important;
+}
+.admin-Form .bootstrap-select.btn-group .dropdown-menu li a {
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+.admin-Form .dropdown-menu > li > a:focus,
+.admin-Form .dropdown-menu > li > a:hover {
+  color: #76838f;
+  text-decoration: none;
+  background-color: #f3f7f9;
+}
+.admin-Form .bootstrap-select .dropdown-toggle:focus {
+  outline: 0 !important;
+}
+.admin-Form .btn-outline.btn-primary {
+  color: #62a8ea;
+  background-color: transparent;
+}
+.admin-Form .form-daterange span {
+  width: 25px;
+  display: inline;
+  background-color: #fff;
+  border: 0;
+}
+.admin-Form .form-daterange input {
+  width: calc(50% - 50px);
+  display: inline;
+}
+.admin-Form .uploader {
+  margin-top: 30px;
+}
+.datetimepicker td,
+.datetimepicker th {
+  padding: 5px !important;
+  font-size: 13px;
+}
+.bootstrap-table .table thead > tr > th {
+  background: #4397e6;
+  color: white;
+}
+.admin-Table-inline-form label {
+  width: 16%;
+  float: left;
+  text-align: right;
+  line-height: 27px;
+}
+.admin-Table-inline-form label::after {
+  content: " : ";
+}
+.admin-Table-inline-form label + input,
+.admin-Table-inline-form label + div,
+.admin-Table-inline-form label + .bootstrap-select.form-control:not([class*=col-]) {
+  width: 84%;
+  float: left;
+}
+/** 重写一下所有的箭头排序 **/
+.fixed-table-container thead th .asc {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAATCAYAAAByUDbMAAABMklEQVQ4T9WUvVHDQBBGv89OUIQJUQQVICpA2A1YJRBaCXIlOLEIcQeYAmyOCigBogtIwAk4QLPMMciI8f0IMjZePe3b3VuiRYjIDEBB8sWXzhBLRAoAFwDmJLM/w0QkAXDfAGQk5y6gszIR6QG4BWCAdRjNQ5euDzYBcG6pQpE8tVVnhYnIEMC1pz9jkuZnP2IL9qX3AMBousLoHpN8bCbYYArASWjKALZ0g6vRArpJ+UewfqkVGe6ZCO6WeZx6B5BePfe66zczpV1Pv1YVmKjRvn+aBjAo9RB075kIxss8Du9ZXU3/Uk9oeQE2vfob5zSNbmf9qggeNXRX1U50oM72rKfIuxrp9Cnpdt6/r4YgW+Tx76/GRrfUBfl5z24Wo9i8WWe0WtpBqWdVFBUuvZr+AaV0YxSFbcKtAAAAAElFTkSuQmCC) !important;
+}
+.fixed-table-container thead th .desc {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAATCAYAAAByUDbMAAABNklEQVQ4T9WUsVHDUBBEd+VIJJgQRVABogKM3IBVAqGdIFdiJxYh7gBTgEBUQAkQKSBBJHYCXubPIKNB+pIg46f/7s3t7d0RHd4wzpYfrhulFwd5UzjbWEGcRSRmEFbJxAv/DBssXvye8/64AwhhMvFWNqC1ssH1a7+3Wd+D9ItkSfnW3Tu2ybXCgqtsTuCypoo0GXvnddXVwoZxNgJxY5MjYXo38eY//yswI8/ZrJ9I9u0w5Vs6p+n48LkcU4EFcZaSOGtzGUBFbutodIDuQv4RTFIKdOrZA8lBowGSjIvGpf2Gfr0B8Ek2u2kAkkaAfc4ATEm2z1lpdUxw3QZU5BU5Vje/5Jr+nZTkGnlHJGtPUeNoSDJL/n01gJDk769GSW4EYAbglqTppfV1GlpJSwCRTV5B/wTPwmYUtQxMegAAAABJRU5ErkJggg==) !important;
+}

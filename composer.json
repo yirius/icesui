@@ -1,0 +1,29 @@
+{
+    "name": "yirius/icesui",
+    "description": "The ThinkPHP5 Admin Ui package",
+    "type": "think-extend",
+    "authors": [
+        {
+            "name": "yirius",
+            "email": "2951979767@qq.com"
+        }
+    ],
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "icesui\\": "src"
+        },
+        "files": [
+            "src/helper.php"
+        ]
+    },
+    "require": {
+        "topthink/think-helper": ">=1.0.4",
+        "topthink/think-installer": ">=1.0.10"
+    },
+    "extra": {
+        "think-config": {
+            "icesui": "src/config.php"
+        }
+    }
+}
