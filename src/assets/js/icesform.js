@@ -132,7 +132,7 @@ $(function(){
             staticFiles: staticFiles
         }).on('onFileUploaded', function(file, event, respone) {
             respone = JSON.parse(respone.response);
-            filesArr.push(respone.data.id);
+            filesArr.push(respone.id);
             thiInput.val(filesArr.join(","));
         });
     });

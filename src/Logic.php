@@ -16,7 +16,9 @@ class Logic extends IcesBuilder
     {
         //指定是json
         config("default_return_type", "json");
-        $this->uploadDataBase = db($this->showConfig['uploadDb']);
+        $this->uploadDataBase = db($this->showConfig['uploadDb'], array_merge(config('database'), [
+            'prefix' => "ices_"
+        ]));
     }
 
     public function ueditor(){
@@ -58,9 +60,10 @@ class Logic extends IcesBuilder
      * @createtime: 17/5/3 15:13
      * @url /icesui/upload
      * @param string $fileFormName
+     * @param string $uploadUidName
      * @return array
      */
-    public function upload($fileFormName = "upfile"){
+    public function upload($fileFormName = "upfile", $uploadUidName = ''){
         $file = $this->request->file($fileFormName);
         $info = $file
             ->validate(['size' => $this->showConfig['uploadSize'],'ext' => $this->showConfig['uploadFileExt']])
@@ -84,11 +87,13 @@ class Logic extends IcesBuilder
                 'createtime' => date("Y-m-d H:i:s"),
                 'isthumb' => $isthumb
             ];
-            $uid = session($this->showConfig['uploadUidName']);
+            $uid = session(empty($uploadUidName)?$this->showConfig['uploadUidName']:$uploadUidName);
             if(!empty($uid)){
                 $fileinfo['uid'] = $uid;
             }
-            $this->uploadDataBase->insert($fileinfo);
+            $flag = $this->uploadDataBase->insert($fileinfo);
+            if($flag)
+                $fileinfo['id'] = $this->uploadDataBase->getLastInsID();
             return $fileinfo;
         }else{
             // 上传失败获取错误信息

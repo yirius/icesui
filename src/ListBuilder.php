@@ -141,17 +141,23 @@ HTML;
         }
         return $this->setTableColumns($title, "operate", false, <<<HTML
 function(value, data){
-    return "{$tempBtns}".replace(new RegExp(/{id}/g), data.id);
+    return "{$tempBtns}".replace(new RegExp(/{id}/g), data[tableConfig.idField]);
 }
 HTML
         , $width, $align, false);
     }
 
-    public function getTable($getRowsUrl = ""){
+    public function setTableConfig($name, $value){
+        $this->showConfig['tableConfig'][$name] = $value;
+        return $this;
+    }
+
+    public function getTable($getRowsUrl = "", $height = '600'){
         $this->showConfig['tableConfig']['tableColumns'] = json_encode($this->listArray);
         $this->assign("tableTopBtns", $this->listBtnsArray);
         $this->assign("formRenderArray", $this->formArray);
         $this->showConfig['tableConfig']['getRowsUrl'] = $getRowsUrl;
+        $this->showConfig['tableConfig']['height'] = $height;
 
         //设置table需要的样式和js
         $this

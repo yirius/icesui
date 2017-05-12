@@ -291,7 +291,7 @@ class FormBuilder extends IcesBuilder
      * @return $this
      * @throws Exception
      */
-    public function addUpload($title, $name, $value = [], $url = '/upload.html', $limitcount = 5, $extra_class = 'col-xs-12', $extra_attr = 'readonly'){
+    public function addUpload($title, $name, $value = [], $url = '/icesui/upload.html', $limitcount = 5, $extra_class = 'col-xs-12', $extra_attr = 'readonly'){
         if(!empty($value)){
             if(empty($value[0]['id'])){
                 throw Exception("upload的值需要包含id|name|type|size|orgiSize|lastModifiedDate");
@@ -497,7 +497,7 @@ class FormBuilder extends IcesBuilder
         return $this;
     }
 
-    public function getForm($postUrl){
+    public function getForm($postUrl = ""){
         //挂一下渲染环境
         $this->assign("formRenderArray", $this->formArray);
         //引入一下form的js

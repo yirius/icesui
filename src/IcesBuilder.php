@@ -82,7 +82,7 @@ class IcesBuilder
             "clickToSelect" => true,
             "singleSelect" => false,
             "getRowsUrl" => "/manage/index/_ajaxTable.html",
-            "postData" => ["id" => 1],
+            "postData" => [],
             "tableColumns" => "",
             "tableDeleteUrl" => "",
             "tableAddUrl" => "",

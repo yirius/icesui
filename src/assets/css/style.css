@@ -261,6 +261,12 @@
   background: #4397e6;
   color: white;
 }
+.admin-Table-inline-form .form {
+  padding: 0 20px;
+}
+.admin-Table-inline-form .admin-Form .form-material {
+  margin: 10px 0 15px 0;
+}
 .admin-Table-inline-form label {
   width: 16%;
   float: left;

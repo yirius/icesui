@@ -58,7 +58,9 @@ class Model extends \think\Model
 
         $list = $this->where($where)->where($where_extra)->field($field)->order($sort." ".$order)->page($offset,$limit)
             ->group($group_by_key)->select();
-        if(!empty($with)) $this->db()->alias('a')->join($with);
+        if(!empty($with)){
+            $this->alias('a')->join($with);
+        }
         if(empty($group_by_key)){
             $count = $this->where($where)->where($where_extra)->count();
         }else{
@@ -91,9 +93,9 @@ class Model extends \think\Model
                 $where = [$pk => $pk_value];
         }
         //如果where不为空, 吧add里面的pk置为空
-        if(!empty($where) && $where['id'] == 0){
+        if(!empty($where) && $where[$pk] == 0){
             $where = [];
-            unset($add['id']);
+            unset($add[$pk]);
         }
         //自动判断是新增还是修改
         if(empty($scene))
@@ -115,7 +117,7 @@ class Model extends \think\Model
         }
     }
 
-    public function AutoDelete($ids = [], $notDelete = []){
+    public function AutoDelete($ids = [], $notDelete = [], $pkField = "id"){
         if(empty($ids)){
             $ids = input('param.')['ids'];
             if(!empty($ids))
@@ -124,7 +126,7 @@ class Model extends \think\Model
         $errorDelete = [];
         foreach($ids as $i => $v){
             if(!in_array($v, $notDelete)){
-                $flag = $this->where('id', $v)->delete();
+                $flag = $this->where($pkField, $v)->delete();
                 if(!$flag)
                     $errorDelete[] = $v;
             }
