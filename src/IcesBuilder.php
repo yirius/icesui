@@ -129,7 +129,7 @@ class IcesBuilder
     protected function show($name, $vars = [], $replace = [], $config = [])
     {
         $resource = [
-            "__ASSETS__" => $this->showConfig['viewReplace']==true?"/icesui/assets":"/static"
+            "__ASSETS__" => $this->showConfig['viewReplace']===true?"/icesui/assets":$this->showConfig['viewReplace']
         ];
         $replace = array_merge($replace, $resource);
         $this->view->assign("showConfig", $this->showConfig);
