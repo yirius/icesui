@@ -71,6 +71,10 @@ $(function(){
         });
     });
 
+    $('input[data-plugin="tags"]').each(function(n,v){
+        $(v).tagsinput();
+    });
+
     $('div[data-plugin="sortable"]').each(function(n,v){
         var initValue = [], inputForthis = $("#"+$(v).data("id"));
         $(v).find("div").each(function(key, value){

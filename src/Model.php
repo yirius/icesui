@@ -75,7 +75,7 @@ class Model extends \think\Model
         return $return;
     }
 
-    public function AutoSave($add, $where = [], $scene = '', $returnmsg = '', $pk = ''){
+    public function AutoSave($add, $where = [], $scene = '', $returnmsg = '', $pk = '', $success = ''){
         $pk = empty($pk)?$this->getPk():$pk;//获取主键
         if(is_array($pk))
             $pk = $pk[0];
@@ -104,10 +104,15 @@ class Model extends \think\Model
             $auto_name = $this->name.".".$scene;
 
         $result = $this->validate($auto_name)->save($add, $where);//->auto($auto_name)
-        if($result)
+        if($result){
+            if($success instanceof \Closure) {
+                // 执行闭包
+                call_user_func_array($success, []);
+            }
             $this->success(empty($returnmsg)?"提交成功":str_replace(["{id}", ],[$result],$returnmsg), null, [
                 'id' => $result
             ]);
+        }
         else{
             if($error = $this->getError()){
                 $this->error($error);

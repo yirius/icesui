@@ -50,6 +50,7 @@ class IcesBuilder
         'footconfig' => '',
         'scripts' => [],
         'styles' => [],
+        'htmls' => "",
         'viewReplace' => true,
         'adminUrl' => '/admin.html',
         'adminTitle' => 'Icesui',
@@ -129,7 +130,7 @@ class IcesBuilder
     protected function show($name, $vars = [], $replace = [], $config = [])
     {
         $resource = [
-            "__ASSETS__" => $this->showConfig['viewReplace']===true?"/icesui/assets":$this->showConfig['viewReplace']
+            "__ASSETS__" => $this->showConfig['viewReplace']==true?"/icesui/assets":"/static"
         ];
         $replace = array_merge($replace, $resource);
         $this->view->assign("showConfig", $this->showConfig);
@@ -168,6 +169,30 @@ class IcesBuilder
         }else{
             $this->showConfig[$name] = $value;
         }
+        return $this;
+    }
+
+    public function setHtmls($html){
+        if(empty($this->showConfig['htmls']))
+            $this->showConfig['htmls'] = $html;
+        else
+            $this->showConfig['htmls'] .= $html;
+        return $this;
+    }
+
+    public function setFooterconfig($html){
+        if(empty($this->showConfig['footconfig']))
+            $this->showConfig['footconfig'] = $html;
+        else
+            $this->showConfig['footconfig'] .= $html;
+        return $this;
+    }
+
+    public function setHeadConfig($html){
+        if(empty($this->showConfig['headconfig']))
+            $this->showConfig['headconfig'] = $html;
+        else
+            $this->showConfig['headconfig'] .= $html;
         return $this;
     }
 

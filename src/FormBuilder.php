@@ -65,6 +65,11 @@ class FormBuilder extends IcesBuilder
         return $this;
     }
 
+    public function addHidden($name, $value = '', $tips = '', $extra_class = 'col-xs-12', $extra_attr = ''){
+        $this->_addCommon("hidden", "", $name, $value, $tips, $extra_class, $extra_attr);
+        return $this;
+    }
+
     /**
      * @title addChosenIcon添加一个选择图标器
      * @description addText用来
@@ -164,6 +169,18 @@ class FormBuilder extends IcesBuilder
         return $this;
     }
 
+    public function addTags($title, $name, $value = '', $tips = '', $extra_class = 'col-xs-12', $extra_attr = ''){
+
+        $this->setLinkFiles([
+            "lib/bstags/bootstrap-tagsinput.min.js",
+        ])->setLinkFiles([
+            "lib/bstags/bootstrap-tagsinput.css"
+        ], 'styles');
+
+        $this->_addCommon("tags", $title, $name, $value, $tips, $extra_class, $extra_attr);
+
+        return $this;
+    }
     /**
      * @title addTextarea添加一个textarea
      * @description addTextarea添加一个textarea
@@ -298,7 +315,7 @@ class FormBuilder extends IcesBuilder
             }
         }else{
             if(!empty($this->formValue[$name])){
-                $value = db("uploads")->field("id,title as name,mime as type,size,size as orgSize,createtime as lastModifiedDate")->where('id', 'in', $this->formValue[$name])->select();
+                $value = db("ices_uploads")->field("id,title as name,mime as type,size,size as orgSize,createtime as lastModifiedDate")->where('id', 'in', $this->formValue[$name])->select();
             }
         }
 

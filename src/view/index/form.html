@@ -113,6 +113,17 @@
                     {include file="form/chosenicon" type='' /}
                 {/case}
 
+
+                {case value="tags"}
+                    {// tags }
+                    {include file="form/tags" type='' /}
+                {/case}
+
+                {case value="hidden"}
+                    {// hidden }
+                    {include file="form/hidden" type='' /}
+                {/case}
+
             {/switch}
         {/foreach}
         <button type="submit" class="btn btn-primary">提交</button>
